@@ -16,10 +16,12 @@ public class Ex01_variables {
 		
 		// 변수값 출력
 		System.out.println(name);
-		System.out.println(age);
-		System.out.println(height);
-		System.out.println(address);
-		System.out.println(mobile);
+		System.out.println("저의 이름은: " + name);
+		System.out.println("저의 이름은 " + name + "입니다.");
+//		System.out.println(age);
+//		System.out.println(height);
+//		System.out.println(address);
+//		System.out.println(mobile);
 	}
 
 }
