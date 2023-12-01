@@ -11,6 +11,16 @@ public class Ex01_Scanner {
 		System.out.print("숫자를 입력하세요: "); // ln : 줄바꿈
 		int num1 = scanner.nextInt();
 		System.out.println(num1);
+		
+		System.out.print("이름을 입력하세요: ");
+		String name = scanner.next();
+		System.out.println(name);
+		
+		scanner.nextLine(); // next(); ,nextLine();을 번갈아서 쓸 때 적는다.
+		
+		System.out.print("주소를 입력하세요: ");
+		String address = scanner.nextLine(); // 띄어쓰기도 출력
+		System.out.println(address);
 	}
 
 }
