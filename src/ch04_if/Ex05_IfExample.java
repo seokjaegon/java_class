@@ -16,7 +16,7 @@ public class Ex05_IfExample {
 			System.out.println("0");
 		} else if (num1 > 0) {
 			System.out.println("양수");
-		} else {
+		} else { //else if (num1 <0)
 			System.out.println("음수");
 		}
 	}
