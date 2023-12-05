@@ -14,10 +14,10 @@ public class Ex08_ForEx {
             System.out.println(i+"단");
             for (int j = 1; j <= 9; j++) { // 곱하는 수(1~9)
                 System.out.print(i + "x" + j + "=" + (i * j));
-                System.out.print("\t");
+                System.out.print("\t"); // 띄어쓰기: \t
             }
 //            System.out.println();
-            System.out.print("\n");
+            System.out.print("\n"); // 줄바꿈: \n
         }
     }
 }
