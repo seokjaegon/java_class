@@ -23,5 +23,21 @@ public class Ex07_WhileEx {
                 break;
             }
         }
+//        int sum = 0;
+//        int cnt = 1;
+//        int s = 1;
+//        int num = 0;
+//
+//        while (true) {
+//            sum += num;
+//            if(sum >= 100) {
+//                System.out.println(num);
+//                break;
+//            } else {
+//                num = s * cnt;
+//                s = -s;
+//                cnt++;
+//            }
+//        }
     }
 }
