@@ -54,5 +54,7 @@ public class Ex08_WhileEx {
                 System.out.println("잘못 선택하셨습니다. 다시 선택해주세요.");
             }
         }
+
+
     }
 }
