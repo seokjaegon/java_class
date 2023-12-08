@@ -3,8 +3,10 @@ package ch09_array;
 public class Ex07_ArrayEx {
     public static void main(String[] args) {
         int[] num = {3, 2, 1, 5, 4};
+
+        // 중첩 for문을 이용하여 정렬하기
         for (int i=0; i < num.length; i++) {
-           for (int j =i+1; j < num.length; j++) {
+            for (int j =i+1; j < num.length; j++) {
                if(num[i]>num[j]) {
                    int max = num[i];
                    num[i] = num[j];
