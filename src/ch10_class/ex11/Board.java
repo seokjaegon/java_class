@@ -1,0 +1,117 @@
+package ch10_class.ex11;
+
+import java.util.Scanner;
+
+public class Board {
+    /**
+     * 게시글 클래스
+     * <p>
+     * 필드
+     * 글번호(id) - Long 타입
+     * 제목(boardTitle)
+     * 작성자(boardWriter)
+     * 내용(boardContents)
+     * 조회수(boardHits)
+     * 필드에 대한 getter/setter
+     * <p>
+     * 생성자 2가지
+     * <p>
+     * toString method
+     * <p>
+     * 글조회 method
+     * name: findByid
+     * parameter: id
+     * return: x
+     * 샐행내용
+     * main으로부터 글번호를 전달받고 글번호가 일치하면 해당 게시글 내용을
+     * print로 출력해준다.
+     * 단 출력하기 전에 조회수 값을 1 증가 시켜야 한다.
+     */
+    private  Long id;
+    private String boardTitle;
+    private String boardWriter;
+    private String boardContents;
+    private int boardHits;
+    private boolean bool1;
+    private double double1;
+    private int num = 100;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getBoardTitle() {
+        return boardTitle;
+    }
+
+    public void setBoardTitle(String boardTitle) {
+        this.boardTitle = boardTitle;
+    }
+
+    public String getBoardWriter() {
+        return boardWriter;
+    }
+
+    public void setBoardWriter(String boardWriter) {
+        this.boardWriter = boardWriter;
+    }
+
+    public String getBoardContents() {
+        return boardContents;
+    }
+
+    public void setBoardContents(String boardContents) {
+        this.boardContents = boardContents;
+    }
+
+    public int getBoardHits() {
+        return boardHits;
+    }
+
+    public void setBoardHits(int boardHits) {
+        this.boardHits = boardHits;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "id=" + id +
+                ", boardTitle='" + boardTitle + '\'' +
+                ", boardWriter='" + boardWriter + '\'' +
+                ", boardContents='" + boardContents + '\'' +
+                ", boardHits=" + boardHits +
+                ", bool1=" + bool1 +
+                ", double1=" + double1 +
+                ", num=" + num +
+                '}';
+    }
+
+
+    public Board() {
+
+    }
+    // hits는 기본값을 0으로 하면 되기 때문에 생성자에서 제외
+    public Board(Long id, String boardTitle, String boardWriter, String boardContents) {
+        this.id = id;
+        this.boardTitle = boardTitle;
+        this.boardWriter = boardWriter;
+        this.boardContents = boardContents;
+
+    }
+
+    public void findById(Long search_id) {
+         if (id.equals(search_id) ) {
+            boardHits++;
+            System.out.println("제목: " + boardContents);
+            System.out.println("작성자: " + boardContents);
+            System.out.println("조회수: " + boardContents);
+            System.out.println("내용: " + boardContents);
+        }
+    }
+}
+
+
