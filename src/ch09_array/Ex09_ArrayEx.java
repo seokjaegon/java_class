@@ -30,6 +30,7 @@ public class Ex09_ArrayEx {
             } else if (select == 4) {
                 int min = 0;
                 int sum = 0;
+                float avg = 0;
                 for(int i =0; i< score.length; i++) {
                     sum+=score[i];
                     for(int j = i+1; j < score.length; j++){
@@ -40,8 +41,9 @@ public class Ex09_ArrayEx {
                         }
                     }
                 }
+                avg = sum/ score.length;
                 System.out.println("최고점수: "+ score[0]);
-                System.out.println("평균점수: "+ (double)(sum/score.length));
+                System.out.println("평균점수: "+ avg);
                 for (int i = 0; i < score.length; i++){
                     System.out.println((i+1)+"등: "+score[i]);
                 }

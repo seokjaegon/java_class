@@ -15,7 +15,12 @@ public class Ex02_ComparisonOperator {
 		result = bool1;
 		System.out.println(result);
 		System.out.println(bool1);
-		
+
+		//비교연산자
+		// >, <, >=, <=, ==, !=
+		System.out.println(15 == 14); //false
+		System.out.println(15 != 14); //true
+		System.out.println(15 != 15); //false
 	}
 
 }

@@ -39,7 +39,18 @@ public class Ex04_LogicalOperator {
 		System.out.println("Not 연산 수행 전: " + bool2);
 		bool2 = !bool2;
 		System.out.println("Not 연산 수행 후: " + bool2);
-		
+
+		//논리연산자
+		// &&(and) : 둘 다 참일때 참
+		// ||(or) : 둘 중에 하나라도 참이면 참
+		System.out.println(true&&true); // true
+		System.out.println(true&&false); //false
+		System.out.println(false&&true); //false
+		System.out.println(true||true); // true
+		System.out.println(true||false); //true
+		System.out.println(false||true); //true
+		System.out.println(true||false); //true
+		System.out.println(false||false);
 	}
 
 }
