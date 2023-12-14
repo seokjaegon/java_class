@@ -10,7 +10,7 @@ public class BookMain {
 
         // 기본생성자로 Book 객체(book1) 생성 후 bookList에 추가
         Book book1 = new Book();
-        book1.setId(1L);
+        // book1.setId(1L);
         book1.setBookTitle("퓨처셀프");
         book1.setBookAuthor("벤자민 하디");
         book1.setBookPrice(17820);
@@ -18,8 +18,11 @@ public class BookMain {
         bookList.add(book1);
 
         // 매개변수 생성자로 Book 객체(book2) 생성 후 bookList에 추가
-        Book book2 = new Book(2L, "마흔에 읽은 쇼펜하우어", "강용수", 15300, "유노북스");
+        Book book2 = new Book("마흔에 읽은 쇼펜하우어", "강용수", 15300, "유노북스");
         bookList.add(book2);
+
+        Book book3 = new Book("세이노의 가르침", "세이노", 6480, "데어원");
+        bookList.add(book3);
 
         // for를 이용하여 bookList의 전체 데이터 출력
         for (int i = 0; i < bookList.size(); i++) {
