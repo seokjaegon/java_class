@@ -11,9 +11,9 @@ public class StudentMain {
 
 
         while (true) {
-            System.out.println("---------------------------------------------------------");
-            System.out.println("1.method1 호출 | 2.method2 호출 | 3.method3 호출 | 4.종료");
-            System.out.println("---------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------");
+            System.out.println("1.method1 호출 | 2.method2 호출 | 3.method3 호출 | 4.methode4 호출 | 5.method 호출 | 0.종료");
+            System.out.println("-----------------------------------------------------------------------------------------");
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
@@ -25,6 +25,10 @@ public class StudentMain {
             } else if (select == 3) {
                 studentService.method3();
             } else if (select == 4) {
+                studentService.method4();
+            } else if (select == 5) {
+                studentService.method5();
+            } else if (select == 0) {
                 break;
             }
         }

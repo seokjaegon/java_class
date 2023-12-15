@@ -29,8 +29,32 @@ public class StudentRepository {
      * 실행내용: 전달받은 DTO 객체를 List에 저장하고 결과를 리턴
      */
     public boolean method3(StudentDTO studentDTO) {
-        studentDTOList.add(studentDTO);
-        System.out.println(studentDTOList.get(0));
-        return studentDTOList.add(studentDTO);
+        boolean result = studentDTOList.add(studentDTO);
+        return result;
+    }
+
+    /**
+     * return type: List
+     */
+    public List<StudentDTO> method4() {
+        return studentDTOList;
+    }
+
+    /**
+     * name: method5
+     * parameter: Long
+     * return: StudentDTO
+     */
+    public StudentDTO method5(Long id) {
+        // id와 일치하는 데이터가 있으면 해당 DTO 객체를 리턴하고
+        // 없으면 null을 리턴함
+        StudentDTO studentDTO = null;
+        for (int i = 0; i < studentDTOList.size(); i++) {
+            if(id.equals(studentDTOList.get(i).getId())){
+                System.out.println("조회할 id가 있음.");
+                studentDTO = studentDTOList.get(i);
+            }
+        }
+        return studentDTO;
     }
 }
