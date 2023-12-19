@@ -9,10 +9,25 @@ public class BoardRepository {
         return boardDTOList.add(boardDTO);
     }
 
-    public List<BoardDTO> findByAll() {
+    public List<BoardDTO> findAll() {
         return boardDTOList;
     }
 
+    public boolean count (Long Id) {
+        boolean result = false;
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if(Id.equals(boardDTOList.get(i).getId())) {
+                // 기존 조회수 값을 가져옴
+                int count = boardDTOList.get(i).getCount();
+                // 1 증가 시킴
+                count = count + 1;
+                // 조회수 필드에 저장
+                boardDTOList.get(i).setCount(count);
+                result = true;
+            }
+        }
+        return result;
+    }
     public BoardDTO findById(Long Id) {
         BoardDTO result = null;
         for (int i = 0; i < boardDTOList.size(); i++) {
@@ -33,10 +48,10 @@ public class BoardRepository {
         return result;
     }
 
-    public BoardDTO update(Long Id, String boardPass, String boardTitle, String boardContents) {
+    public BoardDTO update(Long Id, String boardTitle, String boardContents) {
         BoardDTO result = null;
         for (int i = 0; i < boardDTOList.size(); i++) {
-            if(Id.equals(boardDTOList.get(i).getId()) && boardPass.equals(boardDTOList.get(i).getBoardPass())) {
+            if(Id.equals(boardDTOList.get(i).getId())) {
                 boardDTOList.get(i).setBoardTitle(boardTitle);
                 boardDTOList.get(i).setBoardContents(boardContents);
                 result = boardDTOList.get(i);
@@ -66,14 +81,4 @@ public class BoardRepository {
         return result;
     }
 
-//    public void count (Long Id) {
-//        BoardDTO boardDTO = new BoardDTO();
-//        for (int i = 0; i < boardDTOList.size(); i++) {
-//            if(Id.equals(boardDTOList.get(i).getId())) {
-//                int count = boardDTO.getCount();
-//                count = count + 1;
-//
-//            }
-//        }
-//    }
 }
