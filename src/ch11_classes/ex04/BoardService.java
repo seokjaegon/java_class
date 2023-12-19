@@ -24,23 +24,27 @@ public class BoardService {
         }
     }
 
-    public void findByAll() {
-        List<BoardDTO> boardDTOList = boardRepository.findByAll();
+    public void findAll() {
+        List<BoardDTO> boardDTOList = boardRepository.findAll();
+        System.out.println("id\t" + "title\t" + "writer\t" + "count\t");
         for (BoardDTO boardDTO: boardDTOList) {
-            System.out.println(boardDTO);
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() +
+                    "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t");
         }
     }
 
     public void findById() {
         System.out.print("조회할 글번호: ");
         Long findId = scanner.nextLong();
-        BoardDTO result = boardRepository.findById(findId);
-        if (result != null) {
-            System.out.println("조회한 글번호의 글이 있습니다.");
-//            boardRepository.count(findId);
-            System.out.println(result);
+        // 1. 조회수를 1 증가
+        boolean result = boardRepository.count(findId);
+        // 2. 상세내용 가져옴
+        if (result) {
+            BoardDTO boardDTO = boardRepository.findById(findId);
+                System.out.println("조회한 글번호의 글이 있습니다.");
+                System.out.println(boardDTO);
         } else {
-            System.out.println("조회 결과 글번호에 대한 글이 없습니다.");
+            System.out.println("요청하신 게시글은 존재하지 않습니다.");
         }
     }
 
@@ -57,10 +61,9 @@ public class BoardService {
                 String boardTitle = scanner.next();
                 System.out.print("수정할 내용: ");
                 String boardContents = scanner.next();
-                result = boardRepository.update(updateId, boardPass, boardTitle, boardContents);
+                result = boardRepository.update(updateId, boardTitle, boardContents);
                 if(result != null) {
                     System.out.println("수정에 성공하셨습니다.");
-                    System.out.println(result);
                 } else {
                     System.out.println("수정에 실패하셨습니다.");
                 }
@@ -99,10 +102,11 @@ public class BoardService {
         System.out.print("검색할 제목: ");
         String boardTitle = scanner.next();
         List<BoardDTO> result = boardRepository.search(boardTitle);
-        if(result != null) {
-            System.out.println("검색에 성공하셨습니다.");
-            for(BoardDTO boardDTO: result) {
-                System.out.println(boardDTO);
+        if (result.size() > 0){
+            System.out.println("id\t" + "title\t" + "writer\t" + "count\t");
+            for (BoardDTO boardDTO: result) {
+                System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() +
+                        "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t");
             }
         } else {
             System.out.println("검색에 실패하셨습니다.");

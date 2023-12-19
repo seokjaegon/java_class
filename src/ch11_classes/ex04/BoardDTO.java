@@ -84,6 +84,7 @@ public class BoardDTO {
                 ", boardTitle='" + boardTitle + '\'' +
                 ", boardWriter='" + boardWriter + '\'' +
                 ", boardContents='" + boardContents + '\'' +
+                ", boardPass='" + boardPass + '\'' +
                 '}';
     }
 }
