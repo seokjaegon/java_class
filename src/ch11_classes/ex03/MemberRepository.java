@@ -14,7 +14,7 @@ public class MemberRepository {
     public boolean login(String loginEmail, String loginPassword) {
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())&& loginPassword.equals(memberDTOList.get(i).getMemberPassword())) {
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail()) && loginPassword.equals(memberDTOList.get(i).getMemberPassword())) {
                 result = true;
             }
         }

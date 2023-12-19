@@ -15,6 +15,7 @@ public class MemberService {
             if (result) {
                 System.out.println("사용중인 이메일입니다.");
             } else {
+                System.out.println("사용할 수 있는 이메일입니다.");
                 System.out.print("비밀번호: ");
                 String memberPassword = scanner.next();
                 System.out.print("이름: ");

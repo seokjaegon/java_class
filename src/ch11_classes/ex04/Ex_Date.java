@@ -24,7 +24,6 @@ public class Ex_Date {
         System.out.println("second = " + second);
         String createAt = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         System.out.println("createAt = " + createAt);
-        System.out.println("second = " + second);
         createAt = now.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초"));
         System.out.println("createAt = " + createAt);
     }
