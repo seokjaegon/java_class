@@ -26,10 +26,11 @@ public class BoardService {
 
     public void findAll() {
         List<BoardDTO> boardDTOList = boardRepository.findAll();
-        System.out.println("id\t" + "title\t" + "writer\t" + "count\t");
+        System.out.println("id\t" + "title\t" + "writer\t" + "count\t" + "date\t");
         for (BoardDTO boardDTO: boardDTOList) {
             System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() +
-                    "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t");
+                    "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t" +
+                    boardDTO.getCreatedAt() + "\t");
         }
     }
 
@@ -103,10 +104,12 @@ public class BoardService {
         String boardTitle = scanner.next();
         List<BoardDTO> result = boardRepository.search(boardTitle);
         if (result.size() > 0){
-            System.out.println("id\t" + "title\t" + "writer\t" + "count\t");
+            System.out.println("검색 결과");
+            System.out.println("id\t" + "title\t" + "writer\t" + "count\t" + "date\t");
             for (BoardDTO boardDTO: result) {
                 System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() +
-                        "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t");
+                        "\t" + boardDTO.getBoardWriter() + "\t" + boardDTO.getCount() + "\t" +
+                        boardDTO.getCreatedAt() + "\t");
             }
         } else {
             System.out.println("검색에 실패하셨습니다.");
