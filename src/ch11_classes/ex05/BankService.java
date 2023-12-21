@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class BankService {
     BankRepository bankRepository = new BankRepository();
     Scanner scanner = new Scanner(System.in);
-    ClientDTO clientDTO = new ClientDTO();
+
+    // 계좌 등록 매서드
     public void save() {
         while(true) {
             System.out.print("계좌번호: ");
@@ -33,6 +34,7 @@ public class BankService {
         }
     }
 
+    // 잔액 조회 매서드
     public void findByAccountNumber() {
         System.out.print("계좌번호 입력: ");
         String accountNumber = scanner.next();
@@ -47,6 +49,7 @@ public class BankService {
 
     }
 
+    // 입금 매서드
     public void deposit() {
         System.out.print("계좌번호 입력: ");
         String accountNumber = scanner.next();
@@ -62,6 +65,8 @@ public class BankService {
         }
     }
 
+
+    // 출금 매서드
     public void withdraw() {
         System.out.print("계좌번호 입력: ");
         String accountNumber = scanner.next();
@@ -89,7 +94,8 @@ public class BankService {
         }
     }
 
-    public void findAccountList() {
+    // 거래 내역 조회 매서드
+    public void bankingList() {
         System.out.print("계좌번호 입력: ");
         String accountNumber = scanner.next();
         boolean result = bankRepository.findNumber(accountNumber);
@@ -118,12 +124,13 @@ public class BankService {
                         System.out.println(accountDTO);
                     }
                 } else if (select == 4) {
-                        break;
+                    break;
                 }
             }
         }
     }
 
+    // 계좌 이체 매서드
     public void transfer() {
         System.out.print("보내실 분 계좌번호: ");
         String sendNumber = scanner.next();

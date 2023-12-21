@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class AccountDTO {
     private Long id;
     private String accountNumber;
-    private long deposit = 0;
-    private long withdraw = 0;
+    private long deposit;
+    private long withdraw;
     private String bankingAt;
 
     public Long getId() {

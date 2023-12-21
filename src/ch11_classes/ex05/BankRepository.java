@@ -10,6 +10,7 @@ public class BankRepository {
         return clientDTOList.add(clientDTO);
     }
 
+
     public boolean findNumber(String accountNumber) {
         boolean result = true;
         for (int i = 0; i < clientDTOList.size(); i++) {
@@ -119,8 +120,7 @@ public class BankRepository {
                 long balance = clientDTOList.get(i).getBalance();
                 balance = balance - money;
                 clientDTOList.get(i).setBalance(balance);
-            }
-            if(receiveNumber.equals(clientDTOList.get(i).getAccountNumber())) {
+            }else if(receiveNumber.equals(clientDTOList.get(i).getAccountNumber())) {
                 long balance = clientDTOList.get(i).getBalance();
                 balance = balance + money;
                 clientDTOList.get(i).setBalance(balance);

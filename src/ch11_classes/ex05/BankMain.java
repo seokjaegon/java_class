@@ -22,7 +22,7 @@ public class BankMain {
             } else if (select == 4) {
                 bankService.withdraw();
             } else if (select == 5) {
-                bankService.findAccountList();
+                bankService.bankingList();
             } else if (select == 6) {
                 bankService.transfer();
             } else if (select == 0) {
