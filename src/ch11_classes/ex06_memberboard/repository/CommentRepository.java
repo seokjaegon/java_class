@@ -10,7 +10,7 @@ public class CommentRepository {
 
 
     public List<CommentDTO> findId(Long id) {
-        List<CommentDTO> commentDTOS = null;
+        List<CommentDTO> commentDTOS = new ArrayList<>();
         for (int i = 0; i < commentDTOList.size(); i++) {
             if (id.equals(commentDTOList.get(i).getBoardId())) {
                 commentDTOS.add(commentDTOList.get(i));

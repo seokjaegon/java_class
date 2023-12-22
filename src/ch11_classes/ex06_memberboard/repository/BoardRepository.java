@@ -16,18 +16,18 @@ public class BoardRepository {
         return boardDTOList;
     }
 
-    public boolean find(Long id) {
-        boolean result = false;
-        for (int i = 0; i < boardDTOList.size(); i++) {
-            if (id.equals(boardDTOList.get(i).getId())) {
-                int hits = boardDTOList.get(i).getBoardHits();
-                hits = hits + 1;
-                boardDTOList.get(i).setBoardHits(hits);
-                result = true;
-            }
-        }
-        return result;
-    }
+//    public boolean find(Long id) {
+//        boolean result = false;
+//        for (int i = 0; i < boardDTOList.size(); i++) {
+//            if (id.equals(boardDTOList.get(i).getId())) {
+//                int hits = boardDTOList.get(i).getBoardHits();
+//                hits = hits + 1;
+//                boardDTOList.get(i).setBoardHits(hits);
+//                result = true;
+//            }
+//        }
+//        return result;
+//    }
 
 
     public BoardDTO findId(Long id) {
@@ -61,5 +61,15 @@ public class BoardRepository {
             }
         }
         return result;
+    }
+
+    public List<BoardDTO> search(String boardTitle) {
+        List<BoardDTO> boardDTOS = new ArrayList<>();
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (boardDTOList.get(i).getBoardTitle().contains(boardTitle)) {
+                boardDTOS.add(boardDTOList.get(i));
+            }
+        }
+        return boardDTOS;
     }
 }

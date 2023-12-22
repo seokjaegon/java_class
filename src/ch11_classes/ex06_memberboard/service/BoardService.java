@@ -38,10 +38,13 @@ public class BoardService {
         Long id = scanner.nextLong();
         BoardDTO boardDTO = boardRepository.findId(id);
         if (boardDTO != null) {
+            int hits = boardDTO.getBoardHits();
+            hits = hits + 1;
+            boardDTO.setBoardHits(hits);
             System.out.println(boardDTO);
             System.out.println("===== 댓글 ======");
             List<CommentDTO> commentDTOS = commentRepository.findId(id);
-            if(commentDTOS != null) {
+            if(commentDTOS.size() > 0) {
                 for (CommentDTO commentDTO: commentDTOS) {
                     System.out.println(commentDTO);
                 }
@@ -105,7 +108,14 @@ public class BoardService {
     }
 
     public void search() {
-
+        System.out.print("검색할 제목: ");
+        String boardTitle = scanner.next();
+        List<BoardDTO> boardDTOList = boardRepository.search(boardTitle);
+        if (boardDTOList.size() > 0) {
+            listPrint((boardDTOList));
+        } else {
+            System.out.println("검색한 제목이 없습니다.");
+        }
     }
     private void listPrint(List<BoardDTO> boardDTOList) {
         System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
