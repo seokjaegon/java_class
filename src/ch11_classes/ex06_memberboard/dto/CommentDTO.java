@@ -4,12 +4,20 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CommentDTO {
+    /**
+     * 필드 선언
+     *      댓글 관리번호(id)
+     *      게시글 관리번호(boardId)
+     *      댓글 작성자(commentWriter)
+     *      댓글 내용(commentContents)
+     *      댓글 작성날짜(createdAt)
+     */
     private Long id;
     private Long boardId;
     private String commentWriter;
     private String commentContents;
     private String createdAt;
-
+    // 모든 필드의 getter/setter
     public Long getId() {
         return id;
     }
@@ -50,12 +58,13 @@ public class CommentDTO {
         this.createdAt = createdAt;
     }
 
+    // CommentDTO의 기본 생성자
     public CommentDTO() {
 
     }
 
     private static Long idValue = 1L;
-
+    // CommentDTO의 매개변수가 있는 생성자
     public CommentDTO(Long boardId, String commentWriter, String commentContents) {
         this.id = idValue++;
         this.boardId = boardId;
