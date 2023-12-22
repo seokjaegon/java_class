@@ -65,11 +65,9 @@ public class MemberService {
     public void update() {
         MemberDTO memberDTO = null;
         if(commonVariables.loginEmail != null){
-            System.out.print("수정할 이름: ");
-            String memberName = scanner.next();
             System.out.print("수정할 전화번호: ");
             String memberMobile = scanner.next();
-            memberDTO = memberRepository.update(commonVariables.loginEmail, memberName, memberMobile);
+            memberDTO = memberRepository.update(commonVariables.loginEmail, memberMobile);
             if (memberDTO != null) {
                 System.out.println("수정 성공");
             } else {

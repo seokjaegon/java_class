@@ -25,10 +25,9 @@ public class MemberRepository {
         return memeberDTOList;
     }
 
-    public MemberDTO update(String memberEmail, String memberName, String memberMobile) {
+    public MemberDTO update(String memberEmail, String memberMobile) {
         for (int i = 0; i < memeberDTOList.size(); i++) {
             if(memberEmail.equals(memeberDTOList.get(i).getMemberEmail())) {
-                memeberDTOList.get(i).setMemberName(memberName);
                 memeberDTOList.get(i).setMemberMobile(memberMobile);
                 return memeberDTOList.get(i);
             }

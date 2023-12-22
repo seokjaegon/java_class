@@ -75,19 +75,23 @@ public class BoardService {
         System.out.print("수정할 id: ");
         Long id = scanner.nextLong();
         BoardDTO boardDTO = boardRepository.findId(id);
-        if (boardDTO != null && commonVariables.loginEmail.equals(boardDTO.getBoardWriter())) {
-            System.out.print("수정 제목: ");
-            String boardTitle = scanner.next();
-            System.out.print("수정 내용: ");
-            String boardContents = scanner.next();
-            boolean result = boardRepository.update(id, boardTitle, boardContents);
-            if (result) {
-                System.out.println("수정 성공");
+        if (boardDTO != null) {
+            if (commonVariables.loginEmail.equals(boardDTO.getBoardWriter())) {
+                System.out.print("수정 제목: ");
+                String boardTitle = scanner.next();
+                System.out.print("수정 내용: ");
+                String boardContents = scanner.next();
+                boolean result = boardRepository.update(id, boardTitle, boardContents);
+                if (result) {
+                    System.out.println("수정 성공");
+                } else {
+                    System.out.println("수정 실패");
+                }
             } else {
-                System.out.println("수정 실패");
+                System.out.println("작성자만 수정 가능합니다.");
             }
         } else {
-            System.out.println("작성자만 수정 가능합니다.");
+            System.out.println("수정할 id가 없습니다.");
         }
     }
 
@@ -95,15 +99,19 @@ public class BoardService {
         System.out.print("삭제할 id: ");
         Long id = scanner.nextLong();
         BoardDTO boardDTO = boardRepository.findId(id);
-        if (boardDTO != null && commonVariables.loginEmail.equals(boardDTO.getBoardWriter())) {
-            boolean result = boardRepository.delete(id);
-            if (result) {
-                System.out.println("삭제 성공");
+        if (boardDTO != null) {
+            if (commonVariables.loginEmail.equals(boardDTO.getBoardWriter())) {
+                boolean result = boardRepository.delete(id);
+                if (result) {
+                    System.out.println("삭제 성공");
+                } else {
+                    System.out.println("삭제 실패");
+                }
             } else {
-                System.out.println("삭제 실패");
+                System.out.println("작성자만 삭제 가능합니다.");
             }
         } else {
-            System.out.println("작성자만 삭제 가능합니다.");
+            System.out.println("삭제할 id가 없습니다.");
         }
     }
 
