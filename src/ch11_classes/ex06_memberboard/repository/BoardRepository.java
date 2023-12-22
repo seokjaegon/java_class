@@ -16,20 +16,6 @@ public class BoardRepository {
         return boardDTOList;
     }
 
-//    public boolean find(Long id) {
-//        boolean result = false;
-//        for (int i = 0; i < boardDTOList.size(); i++) {
-//            if (id.equals(boardDTOList.get(i).getId())) {
-//                int hits = boardDTOList.get(i).getBoardHits();
-//                hits = hits + 1;
-//                boardDTOList.get(i).setBoardHits(hits);
-//                result = true;
-//            }
-//        }
-//        return result;
-//    }
-
-
     public BoardDTO findId(Long id) {
         BoardDTO boardDTO = null;
         for (int i = 0; i < boardDTOList.size(); i++) {

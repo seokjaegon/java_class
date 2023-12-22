@@ -4,6 +4,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BoardDTO {
+    /**
+     * 필드 선언
+     *      게시글 관리번호(id)
+     *      게시글 제목(boardTitle)
+     *      게시글 작성자(boardWriter)
+     *      게시글 내용(boardContents)
+     *      조회수(boardHits)
+     *      작성날짜(createdAt)
+     */
     private Long id;
     private String boardTitle;
     private String boardWriter;
@@ -11,6 +20,7 @@ public class BoardDTO {
     private int boardHits = 0;
     private String createdAt;
 
+    // 모든 필드의 getter/setter
     public Long getId() {
         return id;
     }
@@ -59,12 +69,13 @@ public class BoardDTO {
         this.createdAt = createdAt;
     }
 
+    // BoardDTO의 기본 생성자
     public BoardDTO() {
 
     }
 
     private static Long idValue = 1L;
-
+    // BoardETO의 매개변수가 있는 생성자
     public BoardDTO(String boardTitle, String boardWriter, String boardContents) {
         this.id = idValue++;
         this.boardTitle = boardTitle;
