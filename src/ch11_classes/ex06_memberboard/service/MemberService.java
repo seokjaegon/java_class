@@ -86,6 +86,7 @@ public class MemberService {
             String memberPassword = scanner.next();
             boolean result= memberRepository.delete(commonVariables.loginEmail, memberPassword);
             if (result) {
+                commonVariables.loginEmail = null;
                 System.out.println("탈퇴 성공");
             } else {
                 System.out.println("탈퇴 실패");
