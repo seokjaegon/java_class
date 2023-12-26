@@ -12,8 +12,8 @@ public class CommentDTO {
      *      댓글 내용(commentContents)
      *      댓글 작성날짜(createdAt)
      */
-    private Long id;
-    private Long boardId;
+    private Long id; // 댓글번호(자동생성)
+    private Long boardId; // 댓글이 작성된 게시글 번호
     private String commentWriter;
     private String commentContents;
     private String createdAt;
