@@ -1,4 +1,4 @@
-package ch12_classes.ex02;
+package ch12_classes.ex02_book;
 
 public class BookDTO {
     /**
