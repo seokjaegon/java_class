@@ -13,10 +13,10 @@ public class BoardRepository {
         return boardDTOList.add(boardDTO);
     }
 
-    public List<BoardDTO> findBoard(String memberEmail) {
+    public List<BoardDTO> findBoard(String memberEmail, String objectName) {
         List<BoardDTO> boardDTOS = new ArrayList<>();
         for (int i = 0; i < boardDTOList.size(); i++) {
-            if (memberEmail.equals(boardDTOList.get(i).getMemberEmail())) {
+            if (memberEmail.equals(boardDTOList.get(i).getMemberEmail()) && objectName.equals(boardDTOList.get(i).getObjectName())) {
                 boardDTOS.add(boardDTOList.get(i));
                 return boardDTOS;
             }

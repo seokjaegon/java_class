@@ -2,6 +2,7 @@ package project.service;
 
 import project.common.commonVariables;
 import project.dto.BoardDTO;
+import project.dto.ClientDTO;
 import project.dto.MarketDTO;
 import project.dto.AccountDTO;
 import project.repository.BoardRepository;
@@ -81,9 +82,9 @@ public class MarketService {
     public void money() {
         MoneyService moneyService = new MoneyService();
         while (true) {
-            System.out.println("-------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------");
             System.out.println("1.계좌 등록 | 2.입금 | 3.입금 내역 | 4.출금 내역 | 5.모든 내역 | 0.종료");
-            System.out.println("-------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------");
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
@@ -117,7 +118,7 @@ public class MarketService {
         String objectName = scanner.next();
         MarketDTO marketDTO = marketRepository.buy(memberEmail, objectName);
         if (marketDTO != null) {
-            List<BoardDTO> boardDTOList = boardRepository.findBoard(memberEmail);
+            List<BoardDTO> boardDTOList = boardRepository.findBoard(memberEmail, objectName);
             if (boardDTOList.size() > 0) {
                 for (BoardDTO boardDTO: boardDTOList) {
                     System.out.println(boardDTO);
@@ -131,12 +132,12 @@ public class MarketService {
             int select = scanner.nextInt();
             if (select == 1) {
                 System.out.print("가격 제시: ");
-                int objectPrice = scanner.nextInt();
+                long objectPrice = scanner.nextLong();
                 System.out.print("댓글: ");
                 String boardContents = scanner.next();
-                AccountDTO accountDTO = moneyRepository.priceCompare(commonVariables.loginEmail, objectPrice);
-                if (accountDTO != null) {
-                    BoardDTO boardDTO = new BoardDTO(memberEmail, commonVariables.loginEmail, objectPrice, boardContents);
+                ClientDTO clientDTO = moneyRepository.priceCompare(commonVariables.loginEmail, objectPrice);
+                if (clientDTO != null) {
+                    BoardDTO boardDTO = new BoardDTO(memberEmail, objectName, commonVariables.loginEmail, objectPrice, boardContents);
                     boolean result = boardRepository.save(boardDTO);
                     if (result) {
                         System.out.println("댓글 쓰기에 성공했습니다.");
@@ -144,7 +145,7 @@ public class MarketService {
                         System.out.println("댓글 쓰기에 실패했습니다.");
                     }
                 } else {
-                    System.out.println("잔고: "+);
+                    System.out.println("잔고: "+ clientDTO.getBalance());
                     System.out.println("입금하고 다시 가격을 제시하세요.");
                 }
             } else if (select == 2) {

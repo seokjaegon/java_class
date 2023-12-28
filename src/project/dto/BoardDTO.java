@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class BoardDTO {
     private Long id;
     private String memberEmail;
+    private String objectName;
     private String boardEmail;
     private int objectPrice;
     private String boardContents;
@@ -25,6 +26,14 @@ public class BoardDTO {
 
     public void setMemberEmail(String memberEmail) {
         this.memberEmail = memberEmail;
+    }
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
     }
 
     public String getBoardEmail() {
@@ -65,9 +74,10 @@ public class BoardDTO {
 
     private static Long idValue = 1L;
 
-    public BoardDTO(String memberEmail, String boardEmail, int objectPrice, String boardContents) {
+    public BoardDTO(String memberEmail, String objectName, String boardEmail, int objectPrice, String boardContents) {
         this.id = idValue++;
         this.memberEmail = memberEmail;
+        this.objectName = objectName;
         this.boardEmail = boardEmail;
         this.objectPrice = objectPrice;
         this.boardContents = boardContents;
@@ -79,6 +89,7 @@ public class BoardDTO {
         return "BoardDTO{" +
                 "id=" + id +
                 ", memberEmail='" + memberEmail + '\'' +
+                ", objectName='" + objectName + '\'' +
                 ", boardEmail='" + boardEmail + '\'' +
                 ", objectPrice=" + objectPrice +
                 ", boardContents='" + boardContents + '\'' +

@@ -67,4 +67,16 @@ public class MoneyRepository {
         }
         return null;
     }
+
+
+    public ClientDTO priceCompare(String loginEmail, long objectPrice) {
+        for (int i = 0; i < clientDTOList.size(); i++) {
+            if(loginEmail.equals(clientDTOList.get(i).getClientName())) {
+                if (objectPrice <= clientDTOList.get(i).getBalance()) {
+                    return clientDTOList.get(i);
+                }
+            }
+        }
+        return null;
+    }
 }
