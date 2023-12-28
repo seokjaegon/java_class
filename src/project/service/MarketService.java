@@ -128,13 +128,14 @@ public class MarketService {
             } else {
                 System.out.println("댓글이 없습니다.");
             }
-            System.out.println("가격 제시와 댓글을 써주세요.");
             System.out.println("댓글쓰기를 원하면 1번, 아니면 2번을 선택해주세요.");
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
+                System.out.println("돈을 사용할 계좌를 선택하세요.");
                 System.out.print("사용할 계좌: ");
                 String accoutNum = scanner.next();
+                System.out.println("가격 제시와 댓글을 써주세요.");
                 System.out.print("가격 제시: ");
                 long objectPrice = scanner.nextLong();
                 System.out.print("댓글: ");
@@ -153,7 +154,7 @@ public class MarketService {
                     }
                 } else {
                     System.out.println("돈이 부족합니다.");
-                    System.out.println("입금하고 다시 가격을 제시하세요.");
+                    System.out.println("돈을 입금하고 다시 가격을 제시하세요.");
                 }
             } else if (select == 2) {
                 System.out.println("메인 메뉴로 돌아갑니다.");
