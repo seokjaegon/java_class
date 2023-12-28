@@ -23,4 +23,13 @@ public class BoardRepository {
         }
         return null;
     }
+
+    public BoardDTO sale(String boardEmail, String objectName) {
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if(boardEmail.equals(boardDTOList.get(i).getBoardEmail()) && objectName.equals(boardDTOList.get(i).getObjectName())) {
+                return boardDTOList.get(i);
+            }
+        }
+        return null;
+    }
 }

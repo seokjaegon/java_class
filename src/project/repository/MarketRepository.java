@@ -55,4 +55,12 @@ public class MarketRepository {
         }
         return null;
     }
+
+    public void saleSituation(String memberEmail, String objectName) {
+        for (int i = 0; i < marketDTOList.size(); i++) {
+            if(memberEmail.equals(marketDTOList.get(i).getMemberEmail()) && objectName.equals(marketDTOList.get(i).getObjectName())) {
+                marketDTOList.get(i).setSaleSituation("O");
+            }
+        }
+    }
 }

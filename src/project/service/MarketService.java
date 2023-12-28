@@ -131,6 +131,8 @@ public class MarketService {
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
+                System.out.print("사용할 계좌: ");
+                String accoutNum = scanner.next();
                 System.out.print("가격 제시: ");
                 long objectPrice = scanner.nextLong();
                 System.out.print("댓글: ");
@@ -140,7 +142,10 @@ public class MarketService {
                     BoardDTO boardDTO = new BoardDTO(memberEmail, objectName, commonVariables.loginEmail, objectPrice, boardContents);
                     boolean result = boardRepository.save(boardDTO);
                     if (result) {
+                        AccountDTO accountDTO = new AccountDTO(commonVariables.loginEmail, accoutNum, 0, objectPrice);
+                        moneyRepository.accountSave(accountDTO);
                         System.out.println("댓글 쓰기에 성공했습니다.");
+                        System.out.println("잔고: "+clientDTO.getBalance());
                     } else {
                         System.out.println("댓글 쓰기에 실패했습니다.");
                     }
@@ -157,5 +162,51 @@ public class MarketService {
     }
 
     public void sale() {
+        System.out.print("올린품목 확인(이메일 입력): ");
+        String memberEmail = scanner.next();
+        List<MarketDTO> marketDTOList = marketRepository.findByEmail(memberEmail);
+        if (marketDTOList.size() > 0) {
+            for (MarketDTO marketDTO: marketDTOList) {
+                System.out.println(marketDTO);
+            }
+            System.out.print("판매할 물건: ");
+            String objectName = scanner.next();
+            System.out.println("댓글 확인");
+            List<BoardDTO> boardDTOList = boardRepository.findBoard(memberEmail, objectName);
+            for(BoardDTO boardDTO: boardDTOList) {
+                System.out.println(boardDTO);
+            }
+            System.out.print("댓글 작성자 이메일: ");
+            String boardEmail = scanner.next();
+            System.out.print("마음에 드는 가격입력: ");
+            long objectPrice = scanner.nextLong();
+            BoardDTO boardDTO = boardRepository.sale(boardEmail, objectName);
+            if (boardDTO != null) {
+                marketRepository.saleSituation(memberEmail, objectName);
+                System.out.print("판매액을 입금할 계좌: ");
+                String accountNum = scanner.next();
+                AccountDTO accountDTO = new AccountDTO(memberEmail, accountNum, objectPrice, 0);
+                moneyRepository.accountSave(accountDTO);
+                ClientDTO clientDTO = moneyRepository.deposit(commonVariables.loginEmail, accountNum, objectPrice);
+                System.out.println("잔고: "+clientDTO.getBalance());
+                System.out.println("판매완료");
+            } else {
+                System.out.println("찾는 댓글이 없습니다.");
+            }
+        } else {
+            System.out.println("등록한 물건이 없습니다.");
+        }
+    }
+
+    public void basket() {
+        List<MarketDTO> marketDTOList = marketRepository.findAll();
+        for (MarketDTO marketDTO: marketDTOList) {
+            System.out.println(marketDTO);
+        }
+        System.out.print("판매자 이메일: ");
+        String memberEmail = scanner.next();
+        System.out.print("장바구니에 담을 물건: ");
+        String objectName = scanner.next();
+
     }
 }

@@ -73,6 +73,9 @@ public class MoneyRepository {
         for (int i = 0; i < clientDTOList.size(); i++) {
             if(loginEmail.equals(clientDTOList.get(i).getClientName())) {
                 if (objectPrice <= clientDTOList.get(i).getBalance()) {
+                    long balance = clientDTOList.get(i).getBalance();
+                    balance = balance - objectPrice;
+                    clientDTOList.get(i).setBalance(balance);
                     return clientDTOList.get(i);
                 }
             }
