@@ -8,7 +8,7 @@ public class BoardDTO {
     private String memberEmail;
     private String objectName;
     private String boardEmail;
-    private int objectPrice;
+    private long objectPrice;
     private String boardContents;
     private String createdAt;
 
@@ -44,11 +44,11 @@ public class BoardDTO {
         this.boardEmail = boardEmail;
     }
 
-    public int getObjectPrice() {
+    public long getObjectPrice() {
         return objectPrice;
     }
 
-    public void setObjectPrice(int objectPrice) {
+    public void setObjectPrice(long objectPrice) {
         this.objectPrice = objectPrice;
     }
 
@@ -74,7 +74,7 @@ public class BoardDTO {
 
     private static Long idValue = 1L;
 
-    public BoardDTO(String memberEmail, String objectName, String boardEmail, int objectPrice, String boardContents) {
+    public BoardDTO(String memberEmail, String objectName, String boardEmail, long objectPrice, String boardContents) {
         this.id = idValue++;
         this.memberEmail = memberEmail;
         this.objectName = objectName;
