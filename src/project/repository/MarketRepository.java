@@ -46,4 +46,13 @@ public class MarketRepository {
         }
         return false;
     }
+
+    public MarketDTO buy(String memberEmail, String objectName) {
+        for (int i = 0; i < marketDTOList.size(); i++) {
+            if(memberEmail.equals(marketDTOList.get(i).getMemberEmail()) && objectName.equals(marketDTOList.get(i).getObjectName())) {
+                return marketDTOList.get(i);
+            }
+        }
+        return null;
+    }
 }

@@ -3,10 +3,10 @@ package project.dto;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MoneyDTO {
+public class AccountDTO {
     private Long id;
+    private String accountNum;
     private String memberEmail;
-    private long balance = 0;
     private long deposit;
     private long withdraw;
     private String createdAt;
@@ -19,6 +19,14 @@ public class MoneyDTO {
         this.id = id;
     }
 
+    public String getAccountNum() {
+        return accountNum;
+    }
+
+    public void setAccountNum(String accountNum) {
+        this.accountNum = accountNum;
+    }
+
     public String getMemberEmail() {
         return memberEmail;
     }
@@ -27,13 +35,6 @@ public class MoneyDTO {
         this.memberEmail = memberEmail;
     }
 
-    public long getBalance() {
-        return balance;
-    }
-
-    public void setBalance(long balance) {
-        this.balance = balance;
-    }
 
     public long getDeposit() {
         return deposit;
@@ -59,14 +60,15 @@ public class MoneyDTO {
         this.createdAt = createdAt;
     }
 
-    public MoneyDTO() {
+    public AccountDTO() {
 
     }
 
     private static Long idValue = 1L;
 
-    public MoneyDTO(String memberEmail, long deposit, long withdraw) {
+    public AccountDTO(String memberEmail, String accountNum, long deposit, long withdraw) {
         this.id = idValue++;
+        this.accountNum = accountNum;
         this.memberEmail = memberEmail;
         this.deposit = deposit;
         this.withdraw = withdraw;
@@ -75,10 +77,10 @@ public class MoneyDTO {
 
     @Override
     public String toString() {
-        return "MoneyDTO{" +
+        return "AccountDTO{" +
                 "id=" + id +
+                ", accountNum='" + accountNum + '\'' +
                 ", memberEmail='" + memberEmail + '\'' +
-                ", balance=" + balance +
                 ", deposit=" + deposit +
                 ", withdraw=" + withdraw +
                 ", createdAt='" + createdAt + '\'' +
