@@ -74,7 +74,25 @@ public class MarketService {
     }
 
     public void money() {
-
+        MoneyService moneyService = new MoneyService();
+        while (true) {
+            System.out.println("-------------------------------------------------------");
+            System.out.println("1.입금 | 2.입금 내역 | 3.출금 내역 | 4.모든 내역 | 0.종료");
+            System.out.println("-------------------------------------------------------");
+            System.out.print("선택> ");
+            int select = scanner.nextInt();
+            if (select == 1) {
+                moneyService.deposit();
+            } else if (select == 2) {
+                moneyService.findByDeposit();
+            } else if (select == 3) {
+                moneyService.findByWithdraw();
+            } else if (select == 4) {
+                moneyService.findAll();
+            } else if (select == 0) {
+                break;
+            }
+        }
     }
 
     public void buy() {

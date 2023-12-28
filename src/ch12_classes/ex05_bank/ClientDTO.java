@@ -70,7 +70,7 @@ public class ClientDTO {
         this.clientName = clientName;
         this.accountNumber = accountNumber;
         this.clientPass = clientPass;
-        this.clientCreatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));;
+        this.clientCreatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     @Override
