@@ -81,8 +81,6 @@ public class MarketService {
 
     public void money() {
         MoneyService moneyService = new MoneyService();
-        System.out.println("--------");
-        System.out.println("돈 관리");
         while (true) {
             System.out.println("-----------------------------------------------------------------");
             System.out.println("1.계좌 등록 | 2.입금 | 3.입금 내역 | 4.출금 내역 | 5.모든 내역 | 0.종료");
@@ -204,5 +202,4 @@ public class MarketService {
             System.out.println("자신의 판매 물품만 볼 수 있습니다.");
         }
     }
-
 }
