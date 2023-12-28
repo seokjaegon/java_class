@@ -18,10 +18,9 @@ public class BoardRepository {
         for (int i = 0; i < boardDTOList.size(); i++) {
             if (memberEmail.equals(boardDTOList.get(i).getMemberEmail()) && objectName.equals(boardDTOList.get(i).getObjectName())) {
                 boardDTOS.add(boardDTOList.get(i));
-                return boardDTOS;
             }
         }
-        return null;
+        return boardDTOS;
     }
 
     public BoardDTO sale(String boardEmail, String objectName) {

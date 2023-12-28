@@ -10,30 +10,34 @@ public class MemberService {
     MemberRepository memberRepository = new MemberRepository();
     Scanner scanner = new Scanner(System.in);
     public void save() {
-        String memberEmail = null;
-        MemberDTO memberDTO = null;
-        do {
-            System.out.print("이메일: ");
-            memberEmail = scanner.next();
-            memberDTO = memberRepository.check(memberEmail);
-            if (memberDTO == null) {
-                System.out.println("사용 가능한 이메일 입니다.");
+        if(commonVariables.loginEmail == null) {
+            String memberEmail = null;
+            MemberDTO memberDTO = null;
+            do {
+                System.out.print("이메일: ");
+                memberEmail = scanner.next();
+                memberDTO = memberRepository.check(memberEmail);
+                if (memberDTO == null) {
+                    System.out.println("사용 가능한 이메일 입니다.");
+                } else {
+                    System.out.println("이미 사용 중인 이메일 입니다.");
+                }
+            } while (memberDTO != null);
+            System.out.print("비밀번호: ");
+            String memberPass = scanner.next();
+            System.out.print("이름: ");
+            String memberName = scanner.next();
+            System.out.print("전화번호: ");
+            String memberMobile = scanner.next();
+            memberDTO = new MemberDTO(memberEmail, memberPass, memberName, memberMobile);
+            boolean result = memberRepository.save(memberDTO);
+            if (result) {
+                System.out.println(memberDTO.getMemberEmail()+"님 회원가입에 축하합니다.");
             } else {
-                System.out.println("이미 사용 중인 이메일 입니다.");
+                System.out.println("등록에 실패하셨습니다.");
             }
-        } while (memberDTO != null);
-        System.out.print("비밀번호: ");
-        String memberPass = scanner.next();
-        System.out.print("이름: ");
-        String memberName = scanner.next();
-        System.out.print("전화번호: ");
-        String memberMobile = scanner.next();
-        memberDTO = new MemberDTO(memberEmail, memberPass, memberName, memberMobile);
-        boolean result = memberRepository.save(memberDTO);
-        if (result) {
-            System.out.println(memberDTO.getMemberEmail()+"님 회원가입에 축하합니다.");
         } else {
-            System.out.println("등록에 실패하셨습니다.");
+            System.out.println("로그아웃 후 사용해주세요.");
         }
     }
 
@@ -92,6 +96,7 @@ public class MemberService {
                     if(memberPass.equals(memberDTO.getMemberPass())) {
                         boolean result = memberRepository.delete(memberEmail, memberPass);
                         if (result) {
+                            commonVariables.loginEmail = null;
                             System.out.println("탈퇴에 성공하셨습니다.");
                         } else {
                             System.out.println("탈퇴에 실패하셨습니다.");
@@ -119,7 +124,7 @@ public class MemberService {
             String memberEmail = scanner.next();
             MemberDTO memberDTO = memberRepository.check(memberEmail);
             if (memberDTO != null) {
-                System.out.println("비밀번호: ");
+                System.out.print("비밀번호: ");
                 String memberPass = scanner.next();
                 if (memberPass.equals(memberDTO.getMemberPass())) {
                     commonVariables.loginEmail = memberEmail;
@@ -145,9 +150,11 @@ public class MemberService {
     public void market() {
         MarketService marketService = new MarketService();
         if (commonVariables.loginEmail != null) {
+            System.out.println("---------");
+            System.out.println("마켓 관리");
             while (true) {
                 System.out.println("---------------------------------------------------------------------------------------------------------");
-                System.out.println("1.상품 등록 | 2.상품 확인 | 3.상품 수정 | 4.상품 삭제 | 5.돈 관리 | 6.상품 구매 | 7.상품 판매 | 8.장바구니 | 0.종료");
+                System.out.println("1.상품 등록 | 2.상품 확인 | 3.상품 수정 | 4.상품 삭제 | 5.돈 관리 | 6.상품 구매 | 7.상품 판매 | 0.종료");
                 System.out.println("---------------------------------------------------------------------------------------------------------");
                 System.out.print("선택> ");
                 int select = scanner.nextInt();
@@ -165,9 +172,7 @@ public class MemberService {
                     marketService.buy();
                 } else if (select == 7) {
                     marketService.sale();
-                } else if (select == 8) {
-                    marketService.basket();
-                } else if (select == 0) {
+                }  else if (select == 0) {
                     break;
                 }
             }

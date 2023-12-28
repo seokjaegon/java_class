@@ -48,45 +48,57 @@ public class MoneyService {
     public void findByDeposit() {
         System.out.print("확인할 이메일: ");
         String memberEmail = scanner.next();
-        System.out.print("확인할 계좌번호: ");
-        String accountNum = scanner.next();
-        List<AccountDTO> accountDTOList = moneyRepository.findByDeposit(memberEmail, accountNum);
-        if (accountDTOList.size() > 0) {
-            for (AccountDTO accountDTO: accountDTOList) {
-                System.out.println(accountDTO);
+        if (memberEmail.equals(commonVariables.loginEmail)) {
+            System.out.print("확인할 계좌번호: ");
+            String accountNum = scanner.next();
+            List<AccountDTO> accountDTOList = moneyRepository.findByDeposit(memberEmail, accountNum);
+            if (accountDTOList.size() > 0) {
+                for (AccountDTO accountDTO: accountDTOList) {
+                    System.out.println(accountDTO);
+                }
+            } else {
+                System.out.println("입금 내역이 없습니다.");
             }
         } else {
-            System.out.println("입금 내역이 없습니다.");
+            System.out.println("자신의 계좌만 확인할 수 있습니다.");
         }
     }
 
     public void findByWithdraw() {
         System.out.print("확인할 이메일: ");
         String memberEmail = scanner.next();
-        System.out.print("확인할 계좌번호: ");
-        String accountNum = scanner.next();
-        List<AccountDTO> accountDTOList = moneyRepository.findByWithdraw(memberEmail, accountNum);
-        if (accountDTOList.size() > 0) {
-            for (AccountDTO accountDTO: accountDTOList) {
-                System.out.println(accountDTO);
+        if (memberEmail.equals(commonVariables.loginEmail)) {
+            System.out.print("확인할 계좌번호: ");
+            String accountNum = scanner.next();
+            List<AccountDTO> accountDTOList = moneyRepository.findByWithdraw(memberEmail, accountNum);
+            if (accountDTOList.size() > 0) {
+                for (AccountDTO accountDTO: accountDTOList) {
+                    System.out.println(accountDTO);
+                }
+            } else {
+                System.out.println("출금 내역이 없습니다.");
             }
         } else {
-            System.out.println("출금 내역이 없습니다.");
+            System.out.println("자신의 계좌만 확인할 수 있습니다.");
         }
     }
 
     public void findAll() {
         System.out.print("확인할 이메일: ");
         String memberEmail = scanner.next();
-        System.out.print("확인할 계좌번호: ");
-        String accountNum = scanner.next();
-        List<AccountDTO> accountDTOList = moneyRepository.findAll(memberEmail, accountNum);
-        if (accountDTOList.size() > 0) {
-            for (AccountDTO accountDTO: accountDTOList) {
-                System.out.println(accountDTO);
+        if (memberEmail.equals(commonVariables.loginEmail)) {
+            System.out.print("확인할 계좌번호: ");
+            String accountNum = scanner.next();
+            List<AccountDTO> accountDTOList = moneyRepository.findAll(memberEmail, accountNum);
+            if (accountDTOList.size() > 0) {
+                for (AccountDTO accountDTO: accountDTOList) {
+                    System.out.println(accountDTO);
+                }
+            } else {
+                System.out.println("내역이 없습니다.");
             }
         } else {
-            System.out.println("내역이 없습니다.");
+            System.out.println("자신의 계좌만 확인할 수 있습니다.");
         }
     }
 

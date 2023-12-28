@@ -37,11 +37,10 @@ public class MoneyRepository {
             if(memberEmail.equals(accountDTOList.get(i).getMemberEmail()) && accountNum.equals(accountDTOList.get(i).getAccountNum())) {
                 if (accountDTOList.get(i).getDeposit() > 0) {
                     accountDTOS.add(accountDTOList.get(i));
-                    return accountDTOS;
                 }
             }
         }
-        return null;
+        return accountDTOS;
     }
 
     public List<AccountDTO> findByWithdraw(String memberEmail, String accountNum) {
@@ -50,11 +49,10 @@ public class MoneyRepository {
             if(memberEmail.equals(accountDTOList.get(i).getMemberEmail()) && accountNum.equals(accountDTOList.get(i).getAccountNum())) {
                 if (accountDTOList.get(i).getWithdraw() > 0) {
                     accountDTOS.add(accountDTOList.get(i));
-                    return accountDTOS;
                 }
             }
         }
-        return null;
+        return accountDTOS;
     }
 
     public List<AccountDTO> findAll(String memberEmail, String accountNum) {
@@ -62,10 +60,9 @@ public class MoneyRepository {
         for (int i = 0; i < accountDTOList.size(); i++) {
             if(memberEmail.equals(accountDTOList.get(i).getMemberEmail()) && accountNum.equals(accountDTOList.get(i).getAccountNum())) {
                     accountDTOS.add(accountDTOList.get(i));
-                    return accountDTOS;
             }
         }
-        return null;
+        return accountDTOS;
     }
 
 
