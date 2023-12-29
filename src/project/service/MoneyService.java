@@ -102,4 +102,20 @@ public class MoneyService {
         }
     }
 
+    public void findBalance() {
+        System.out.print("확인할 이메일: ");
+        String memberEmail = scanner.next();
+        if (memberEmail.equals(commonVariables.loginEmail)) {
+            System.out.print("확인할 계좌번호: ");
+            String accountNum = scanner.next();
+            ClientDTO clientDTO = moneyRepository.findBalance(memberEmail, accountNum);
+            if (clientDTO != null) {
+                System.out.println("잔고: " + clientDTO.getBalance());
+            } else {
+                System.out.println("계좌번호가 없습니다.");
+            }
+        } else {
+            System.out.println("자신의 계좌만 확인할 수 있습니다.");
+        }
+    }
 }

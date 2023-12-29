@@ -148,34 +148,38 @@ public class MemberService {
     }
 
     public void market() {
-        MarketService marketService = new MarketService();
         if (commonVariables.loginEmail != null) {
-            System.out.println("---------");
-            System.out.println("마켓 관리");
-            while (true) {
-                System.out.println("---------------------------------------------------------------------------------------------------------");
-                System.out.println("1.상품 등록 | 2.상품 확인 | 3.상품 수정 | 4.상품 삭제 | 5.돈 관리 | 6.상품 구매 | 7.상품 판매 | 0.종료");
-                System.out.println("---------------------------------------------------------------------------------------------------------");
-                System.out.print("선택> ");
-                int select = scanner.nextInt();
-                if (select == 1) {
-                    marketService.save();
-                } else if (select == 2) {
-                    marketService.findAll();
-                } else if (select == 3) {
-                    marketService.update();
-                } else if (select == 4) {
-                    marketService.delete();
-                } else if (select == 5) {
-                    marketService.money();
-                } else if (select == 6) {
-                    marketService.buy();
-                } else if (select == 7) {
-                    marketService.sale();
-                }  else if (select == 0) {
-                    break;
+            MarketService marketService = new MarketService();
+            if (commonVariables.loginEmail != null) {
+                System.out.println("---------");
+                System.out.println("마켓 관리");
+                while (true) {
+                    System.out.println("---------------------------------------------------------------------------------------------------------");
+                    System.out.println("1.상품 등록 | 2.상품 확인 | 3.상품 수정 | 4.상품 삭제 | 5.돈 관리 | 6.상품 구매 | 7.상품 판매 | 0.종료");
+                    System.out.println("---------------------------------------------------------------------------------------------------------");
+                    System.out.print("선택> ");
+                    int select = scanner.nextInt();
+                    if (select == 1) {
+                        marketService.save();
+                    } else if (select == 2) {
+                        marketService.findAll();
+                    } else if (select == 3) {
+                        marketService.update();
+                    } else if (select == 4) {
+                        marketService.delete();
+                    } else if (select == 5) {
+                        marketService.money();
+                    } else if (select == 6) {
+                        marketService.buy();
+                    } else if (select == 7) {
+                        marketService.sale();
+                    } else if (select == 0) {
+                        break;
+                    }
                 }
             }
+        } else {
+            System.out.println("로그인 후 사용하세요.");
         }
     }
 }

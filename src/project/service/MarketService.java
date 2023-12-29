@@ -50,7 +50,7 @@ public class MarketService {
             if (result) {
                 System.out.println("수정에 성공하셨습니다.");
             } else {
-                System.out.println("수정에 실패하셨습니다.");
+                System.out.println("수정할 물건이 없습니다.");
             }
         } else {
             System.out.println("등록한 물건이 없습니다.");
@@ -79,9 +79,9 @@ public class MarketService {
     public void money() {
         MoneyService moneyService = new MoneyService();
         while (true) {
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("1.계좌 등록 | 2.입금 | 3.입금 내역 | 4.출금 내역 | 5.모든 내역 | 0.종료");
-            System.out.println("-----------------------------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------");
+            System.out.println("1.계좌 등록 | 2.입금 | 3.입금 내역 | 4.출금 내역 | 5.모든 내역 | 6.잔액 확인 | 0.종료");
+            System.out.println("------------------------------------------------------------------------------");
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
@@ -94,7 +94,9 @@ public class MarketService {
                 moneyService.findByWithdraw();
             } else if (select == 5) {
                 moneyService.findAll();
-            }else if (select == 0) {
+            } else if (select == 6) {
+                moneyService.findBalance();
+            } else if (select == 0) {
                 break;
             }
         }
@@ -123,8 +125,8 @@ public class MarketService {
             System.out.print("선택> ");
             int select = scanner.nextInt();
             if (select == 1) {
-                System.out.println("돈을 사용할 계좌를 선택하세요.");
-                System.out.print("사용할 계좌: ");
+                System.out.println("거래에 사용할 계좌를 선택하세요.");
+                System.out.print("계좌번호: ");
                 String accoutNum = scanner.next();
                 System.out.println("가격 제시와 댓글을 써주세요.");
                 System.out.print("가격 제시: ");
@@ -197,7 +199,7 @@ public class MarketService {
         for (MarketDTO marketDTO: marketDTOList) {
             System.out.println(marketDTO.getId() + "\t" + marketDTO.getMemberEmail() +
                     "\t" + marketDTO.getObjectName() + "\t" + marketDTO.getObjectPrice() + "\t"
-                    + marketDTO.getSaleSituation() + marketDTO.getCreatedAt() + "\t");
+                    + marketDTO.getSaleSituation() + "\t" + marketDTO.getCreatedAt() + "\t");
         }
     }
 

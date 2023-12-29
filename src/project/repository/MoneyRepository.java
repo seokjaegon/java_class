@@ -79,4 +79,14 @@ public class MoneyRepository {
         }
         return null;
     }
+
+
+    public ClientDTO findBalance(String memberEmail, String accountNum) {
+        for (int i = 0; i < clientDTOList.size(); i++) {
+            if(memberEmail.equals(clientDTOList.get(i).getClientName()) && accountNum.equals(clientDTOList.get(i).getAccountNum())) {
+                return clientDTOList.get(i);
+            }
+        }
+        return null;
+    }
 }
