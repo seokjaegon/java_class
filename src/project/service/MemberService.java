@@ -130,7 +130,7 @@ public class MemberService {
                     commonVariables.loginEmail = memberEmail;
                     System.out.println(memberDTO.getMemberEmail()+"님 환영합니다.");
                 } else {
-                    System.out.println("로그인 실패");
+                    System.out.println("비밀번호가 틀렸습니다.");
                 }
             } else {
                 System.out.println("이메일이 틀렸습니다.");

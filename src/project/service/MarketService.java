@@ -33,9 +33,7 @@ public class MarketService {
 
     public void findAll() {
         List<MarketDTO> marketDTOList = marketRepository.findAll();
-        for (MarketDTO marketDTO: marketDTOList) {
-            System.out.println(marketDTO);
-        }
+        marketlistPrint(marketDTOList);
     }
 
     public void update() {
@@ -43,9 +41,7 @@ public class MarketService {
         String memberEmail = scanner.next();
         List<MarketDTO> marketDTOList = marketRepository.findByEmail(memberEmail);
         if (marketDTOList.size() > 0) {
-            for (MarketDTO marketDTO: marketDTOList) {
-                System.out.println(marketDTO);
-            }
+            marketlistPrint(marketDTOList);
             System.out.print("수정할 물건: ");
             String objectName = scanner.next();
             System.out.print("수정할 가격: ");
@@ -66,6 +62,7 @@ public class MarketService {
         String memberEmail = scanner.next();
         List<MarketDTO> marketDTOList = marketRepository.findByEmail(memberEmail);
         if (marketDTOList.size() > 0) {
+            marketlistPrint(marketDTOList);
             System.out.print("삭제할 물건: ");
             String objectName = scanner.next();
             boolean result = marketRepository.delete(memberEmail, objectName);
@@ -107,9 +104,7 @@ public class MarketService {
         System.out.println("물건 품목");
         System.out.println("---------");
         List<MarketDTO> marketDTOList = marketRepository.findAll();
-        for (MarketDTO marketDTO: marketDTOList) {
-            System.out.println(marketDTO);
-        }
+        marketlistPrint(marketDTOList);
         System.out.println("거래하고 싶은 회원을 고르세요.");
         System.out.print("> ");
         String memberEmail = scanner.next();
@@ -120,9 +115,7 @@ public class MarketService {
         if (marketDTO != null) {
             List<BoardDTO> boardDTOList = boardRepository.findBoard(memberEmail, objectName);
             if (boardDTOList.size() > 0) {
-                for (BoardDTO boardDTO: boardDTOList) {
-                    System.out.println(boardDTO);
-                }
+                boardlistPrint(boardDTOList);
             } else {
                 System.out.println("댓글이 없습니다.");
             }
@@ -168,16 +161,12 @@ public class MarketService {
         if (memberEmail.equals(commonVariables.loginEmail)) {
             List<MarketDTO> marketDTOList = marketRepository.findByEmail(memberEmail);
             if (marketDTOList.size() > 0) {
-                for (MarketDTO marketDTO: marketDTOList) {
-                    System.out.println(marketDTO);
-                }
+                marketlistPrint(marketDTOList);
                 System.out.print("판매할 물건: ");
                 String objectName = scanner.next();
                 System.out.println("댓글 확인");
                 List<BoardDTO> boardDTOList = boardRepository.findBoard(memberEmail, objectName);
-                for(BoardDTO boardDTO: boardDTOList) {
-                    System.out.println(boardDTO);
-                }
+                boardlistPrint(boardDTOList);
                 System.out.print("댓글 작성자 이메일: ");
                 String boardEmail = scanner.next();
                 System.out.print("마음에 드는 가격입력: ");
@@ -200,6 +189,24 @@ public class MarketService {
             }
         } else {
             System.out.println("자신의 판매 물품만 볼 수 있습니다.");
+        }
+    }
+
+    private void marketlistPrint(List<MarketDTO> marketDTOList) {
+        System.out.println("id\t" + "seller\t" + "objectName\t" + "objectPrice\t" + "saleSituation\t" + "createdAt\t");
+        for (MarketDTO marketDTO: marketDTOList) {
+            System.out.println(marketDTO.getId() + "\t" + marketDTO.getMemberEmail() +
+                    "\t" + marketDTO.getObjectName() + "\t" + marketDTO.getObjectPrice() + "\t"
+                    + marketDTO.getSaleSituation() + marketDTO.getCreatedAt() + "\t");
+        }
+    }
+
+    private void boardlistPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "purchaser\t" + "objectName\t" + "objectPrice\t" + "boardContents\t" + "createdAt\t");
+        for (BoardDTO boardDTO: boardDTOList) {
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardEmail() +
+                    "\t" + boardDTO.getObjectName() + "\t" + boardDTO.getObjectPrice() + "\t"
+                    + boardDTO.getBoardContents() + boardDTO.getCreatedAt() + "\t");
         }
     }
 }
