@@ -21,7 +21,7 @@ public class MarketService {
         System.out.print("등록할 물건: ");
         String objectName = scanner.next();
         System.out.print("가격: ");
-        int objectPrice = scanner.nextInt();
+        long objectPrice = scanner.nextLong();
         MarketDTO marketDTO = new MarketDTO(commonVariables.loginEmail, objectName, objectPrice, "X");
         boolean result = marketRepository.save(marketDTO);
         if (result) {
@@ -45,7 +45,7 @@ public class MarketService {
             System.out.print("수정할 물건: ");
             String objectName = scanner.next();
             System.out.print("수정할 가격: ");
-            int objectPrice = scanner.nextInt();
+            long objectPrice = scanner.nextLong();
             boolean result = marketRepository.update(memberEmail, objectName, objectPrice);
             if (result) {
                 System.out.println("수정에 성공하셨습니다.");

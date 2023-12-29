@@ -7,7 +7,7 @@ public class MarketDTO {
     private Long id;
     private String memberEmail;
     private String objectName;
-    private int objectPrice = 0;
+    private long objectPrice;
     private String saleSituation;
     private String createdAt;
 
@@ -35,11 +35,11 @@ public class MarketDTO {
         this.objectName = objectName;
     }
 
-    public int getObjectPrice() {
+    public long getObjectPrice() {
         return objectPrice;
     }
 
-    public void setObjectPrice(int objectPrice) {
+    public void setObjectPrice(long objectPrice) {
         this.objectPrice = objectPrice;
     }
 
@@ -65,7 +65,7 @@ public class MarketDTO {
 
     private static Long idValue = 1L;
 
-    public MarketDTO(String memberEmail, String objectName, int objectPrice, String saleSituation) {
+    public MarketDTO(String memberEmail, String objectName, long objectPrice, String saleSituation) {
         this.id = idValue++;
         this.memberEmail = memberEmail;
         this.objectName = objectName;

@@ -26,7 +26,7 @@ public class MarketRepository {
         return marketDTOS;
     }
 
-    public boolean update(String memberEmail, String objectName, int objectPrice) {
+    public boolean update(String memberEmail, String objectName, long objectPrice) {
         for (int i = 0; i < marketDTOList.size(); i++) {
             if(memberEmail.equals(marketDTOList.get(i).getMemberEmail()) && objectName.equals(marketDTOList.get(i).getObjectName())) {
                 marketDTOList.get(i).setObjectPrice(objectPrice);
